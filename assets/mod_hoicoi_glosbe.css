@@ -1,0 +1,42 @@
+.ui-helper-hidden-accessible {
+		border: 0px none;
+		clip: rect(0px, 0px, 0px, 0px);
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		padding: 0px;
+		position: absolute;
+		width: 1px;
+	}
+	.ui-widget-content {
+		border: 1px solid #AAA;
+		background:  #FFF;
+		color: #222;
+	}
+	.ui-widget {
+		font-family: Verdana,Arial,sans-serif;
+		font-size: 1.1em;
+	}
+	.ui-menu {
+		list-style: outside none none;
+		padding: 0px;
+		margin: 0px;
+		display: block;
+		outline: medium none;
+	}
+	.ui-autocomplete {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		cursor: default;
+		height: 150px;
+		overflow: scroll;
+	}
+	.ui-front {
+		z-index: 100;
+	}
+	#selection select {
+		width: 100px;
+		background-color: #FFF;
+		border: 1px solid #CCC;
+	}
