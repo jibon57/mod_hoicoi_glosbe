@@ -6,7 +6,7 @@
 
 header('Content-type: application/json');
 if (!empty($_GET['textval'])){
-	$url = "https://glosbe.com/ajax/phrasesAutosuggest/?from=eng&dest=zho&phrase=".$_GET['textval'];
+	$url = "https://glosbe.com/ajax/phrasesAutosuggest/?from=".$_GET['from']."&dest=".$_GET['to']."&phrase=".$_GET['textval'];
 	$ch =  curl_init();
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_URL, $url);

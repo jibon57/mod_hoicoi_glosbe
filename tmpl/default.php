@@ -16,9 +16,11 @@ JHtml::stylesheet('modules/mod_hoicoi_glosbe/assets/mod_hoicoi_glosbe.css');
 	  $( "#tags" ).autocomplete({
 		  source: function ( request, response ) {
 			var textval = $("#tags").val();
+			var from = $("#selection .from").val();
+		    var to = $("#selection .to").val();
 			
 			$.ajax({
-			 url: "<?php echo JURI::base(); ?>modules/mod_hoicoi_glosbe/helper.php?textval="+textval,
+			 url: "<?php echo JURI::base(); ?>modules/mod_hoicoi_glosbe/helper.php?textval="+textval+"&from="+from+"&to="+to,
 			 dataType: "json",
 			 method: "GET",
 			success: function (data)
@@ -41,9 +43,10 @@ JHtml::stylesheet('modules/mod_hoicoi_glosbe/assets/mod_hoicoi_glosbe.css');
 		});
 		
 		$("#translate").click(function(){
-			var phrase = $("#tags").val();
+			var phrase = $.trim($("#tags").val());
 			var from = $("#selection .from").val();
 		    var to = $("#selection .to").val();
+			$("#show").css("display","");
 			$("#meanings").html("Loading.....");
 			$("#examples").html("Loading.....");
 			var meanings,examples;
@@ -67,35 +70,36 @@ JHtml::stylesheet('modules/mod_hoicoi_glosbe/assets/mod_hoicoi_glosbe.css');
 			
 			
 		});
+		$("#close").click(function(){
+			$("#show").css("display","none");
+		});
 			
 	});
   
   </script>
  
 <div class="hoicoi_glosbe<?php echo $params->get( 'moduleclass_sfx' ) ?>">
-	<div class="ui-widget">
-	  <label for="tags">Text: </label>
-	  <input id="tags" type="text" name="textinput" value="">
-	  <button id="translate" class="btn btn-primary">Translate</button>
-	  <p></p>
-	  <div id ="selection">From:
-		<select class="from">
-			<option value="eng">English</option>
-			<option value="zho">Chinese</option>
+	<div class="ui-widget form-group search_container">	  
+		<input id="tags" class="form-control" type="text" name="textinput" value="" placeholder="Enter text">	
+		<button id="translate" class="btn btn-primary">Translate</button>	  
+	  <div id ="selection" class="search_container">
+		<select class="from" class="form-control">
+			<?php echo $from; ?>
 		</select>
-		<button id="toggle" class="btn btn-primary">Toggle</button>
-		To: <select class="to">
-			<option value="zho">Chinese</option>
-			<option value="eng">English</option>
+		<button id="toggle" class="btn btn-small btn-success">Toggle</button>
+		<select class="to" class="form-control">
+			<?php echo $to; ?>
 		</select>
 	  </div>
 	</div>
-	<div>
+	<div id="show" style="display:none;">		
 		<hr>
+		<button id="close" style="float: right;" class="btn btn-small">Close</button>
 		<p><b>Meanings:</b></p>
 		<p id="meanings"></p>
+		<hr>
+		<p><b>Examples: </b></p>
+		<div id="examples"></div>
 	</div>
-	<hr>
-	<p><b>Examples: </b></p>
-	<div id="examples"></div>
+	
 </div>

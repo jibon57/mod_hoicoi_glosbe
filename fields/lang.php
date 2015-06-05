@@ -33,12 +33,12 @@ class JFormFieldLang extends JFormField
 		$html = "
 				<script type=\"text/javascript\">
 					jQuery(\"document\").ready(function($){
-						var i = 0;												
-						$('#add').click(function(){
-							if (parseInt($('#field p:last').attr('id')) > 0){
+						var i = 0;
+						if (parseInt($('#field p:last').attr('id')) > 0){
 								i = parseInt($('#field p:last').attr('id')) + 1;
-							}
-							 $('#field').append(\"<p id='\"+i+\"'>Language:<input name='lan'/>Tag:<input name='tag'/><span id='delete' action='\"+i+\"' class='btn btn-small icon-cancel'></span></p>\");
+							}											
+						$('#add').click(function(){							
+							 $('#field').append(\"<p id='\"+i+\"'>Language:<input name='lan'/>639-3 Code:<input name='tag'/><span id='delete' action='\"+i+\"' class='btn btn-small icon-cancel'></span></p>\");
 							i++;
 						});
 						$('#save').live('click',function(){
@@ -65,11 +65,11 @@ class JFormFieldLang extends JFormField
 				
 		";
 		if (!empty($this->value)){
-			$primary = explode(',',$this->value);
+			$primary = explode(',',rtrim($this->value,","));
 			foreach ($primary as $value){
 				$extract = explode("|", $value);
 				if (!empty($extract[1])){
-					$input .= "<p id='".$extract[0]."'>Language:<input name='lan' value='".$extract[1]."'/>Tag:<input name='tag' value='".$extract[2]."'/><span id='delete' action='".$extract[0]."' class='btn btn-small icon-cancel'></span></p>";
+					$input .= "<p id='".$extract[0]."'>Language:<input name='lan' value='".$extract[1]."'/>639-3 Code:<input name='tag' value='".$extract[2]."'/><span id='delete' action='".$extract[0]."' class='btn btn-small icon-cancel'></span></p>";
 				}
 			}
 			$html .= $input;

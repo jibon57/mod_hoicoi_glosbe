@@ -40,3 +40,9 @@
 		background-color: #FFF;
 		border: 1px solid #CCC;
 	}
+	.search_container {
+		margin: auto;
+	}
+	.search_container  button{
+		margin-top: -9px;
+	}
