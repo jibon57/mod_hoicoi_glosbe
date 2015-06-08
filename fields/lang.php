@@ -53,7 +53,7 @@ class JFormFieldLang extends JFormField
 						});
 						$('#delete').live('click', function(){
 							var id = $(this).attr('action');
-							$('#field p[id=\"'+id+'\"]').remove('');
+							$('#field p[id=\"'+id+'\"]').remove();
 						});
 						
 					});
