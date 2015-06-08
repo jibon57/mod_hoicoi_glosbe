@@ -12,6 +12,7 @@
 	<files>
 		<filename module="mod_hoicoi_glosbe">mod_hoicoi_glosbe.php</filename>
 		<folder>tmpl</folder>
+		<folder>fields</folder>
 		<folder>assets</folder>
 		<filename>helper.php</filename>
 		<filename>index.html</filename>
@@ -28,7 +29,7 @@
 		<fields name="params">
 			<fieldset addfieldpath="/modules/mod_hoicoi_glosbe/fields" name="basic">
 				<field name="classname" type="text" default="" label="Class Name" description="Class Name Description" />
-				 <field  description=""  label="Language Field" name="lang" type="lang" />
+				 <field  description=""  label="Language Field" name="lang" type="Lang" />
 			</fieldset>
 		</fields>
 	</config>			
